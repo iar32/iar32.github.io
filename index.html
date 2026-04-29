@@ -3,35 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Professional Portfolio | Ibrahim Rashid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4A90E2;
+            --slate-blue: #2C3E50;
+            --bg-color: #F4F7F9;
+            --card-white: #FFFFFF;
+            --text-main: #333333;
+            --text-light: #7F8C8D;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--slate-blue);
+            font-weight: 600;
+            margin: 0 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-blue); }
+
+        .container {
+            max-width: 850px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: -60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-section img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--card-white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .card {
+            background: var(--card-white);
+            padding: 80px 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .header-info { text-align: center; margin-bottom: 40px; }
+        
+        h1 { color: var(--slate-blue); font-size: 2.4rem; margin-bottom: 5px; }
+        
+        .title { color: var(--primary-blue); font-weight: 600; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        section { padding: 40px 0; border-top: 1px solid #F0F2F5; }
+        
+        h2 {
+            color: var(--slate-blue);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #EEEEEE;
+            margin-left: 20px;
+        }
+
+        .item { margin-bottom: 35px; }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            color: var(--slate-blue);
+            font-size: 1.1rem;
+        }
+
+        .item-sub {
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        ul { list-style-type: none; }
+        
+        ul li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: "→";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: #F0F7FF;
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            .container { margin-top: 80px; }
+            .item-header { flex-direction: column; gap: 5px; }
+            h1 { font-size: 1.9rem; }
+            .card { padding: 70px 25px 30px; }
+        }
+    </style>
 </head>
 <body>
 
-    <main class="container">
-        <!-- Profile Section -->
-        <section class="profile">
-            <div class="image-container">
-                <!-- Ensure your image is named 'profile.jpg' inside the 'Assets' folder -->
-                <img src="Assets/ProfilePic.jpeg" alt="My Profile Picture" class="profile-img">            </div>
-            
-            <h1>Your Name</h1>
-            <p class="subtitle">Creative Strategist & AI Enthusiast</p>
-            <div class="divider"></div>
-        </section>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+    </nav>
 
-        <!-- About/Bio Section -->
-        <section class="content">
-            <p>Welcome to my digital space. I focus on the intersection of design and technology, exploring new ways to visualize ideas and capture moments through a digital lens.</p>
-        </section>
+    <div class="container">
+        <div class="profile-section">
+            <img src="Assets/ProfilePic.jpeg" alt="Ibrahim Rashid">
+        </div>
 
-        <!-- Links/Social -->
-        <footer class="links">
-            <a href="#">LinkedIn</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Contact</a>
-        </footer>
-    </main>
+        <div class="card">
+            <div id="about" class="header-info">
+                <h1>Ibrahim Rashid</h1>
+                <p class="title">Accounting & Finance | Rutgers Business School</p>
+                <p class="contact-info">
+                    Fair Lawn, NJ • (201) 851-9120 • Ibrahim.rashid2005@hotmail.com
+                </p>
+                <p class="bio" style="color: var(--text-light); max-width: 650px; margin: 0 auto;">
+                    Founder & CEO and Cost Control Analyst with a proven track record of reducing costs and improving operational efficiency. Currently pursuing a B.S. at Rutgers University with a focus on delivering value through strategic financial analysis.
+                </p>
+            </div>
+
+            <section id="experience">
+                <h2>Work Experience</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span>Founder & CEO</span>
+                        <span>July 2025 – Present</span>
+                    </div>
+                    <div class="item-sub">Rashid Group Construction | Paterson, NJ</div>
+                    <ul>
+                        <li>Lead a licensed and insured residential contracting firm serving North Jersey.[cite: 2]</li>
+                        <li>Manage brand presence and outreach through photo and video portfolios and lead response.[cite: 2]</li>
+                        <li>Produce written estimates and proposals, negotiating and securing contracts with new clientele.[cite: 2]</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span>Cost Control Analyst Intern</span>
+                        <span>May 2025 – Aug 2025</span>
+                    </div>
+                    <div class="item-sub">Rasquinha Group | Washington Township, NJ</div>
+                    <ul>
+                        <li>Reduced food costs by 4% for a $40 million company through targeted cost control strategies.[cite: 2]</li>
+                        <li>Lowered labor costs by identifying staffing inefficiencies through variance analysis.[cite: 2]</li>
+                        <li>Improved utility efficiency by 1% through consumption trend analysis.[cite: 2]</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span>Rutgers University - Rutgers Business School</span>
+                        <span>May 2027</span>
+                    </div>
+                    <div class="item-sub">Bachelor of Science in Accounting & Finance | GPA: 3.6/4.0</div>
+                    <ul>
+                        <li>Focusing on high-level financial analysis and accounting principles.[cite: 2]</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-tag">Microsoft Excel</div>
+                    <div class="skill-tag">SQL</div>
+                    <div class="skill-tag">Cost Control</div>
+                    <div class="skill-tag">Team Management</div>
+                    <div class="skill-tag">Financial Analysis</div>
+                    <div class="skill-tag">Bilingual</div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Ibrahim Rashid. Built with Master Prompting techniques.
+    </footer>
 
 </body>
 </html>
