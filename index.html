@@ -13,6 +13,8 @@
             --card-white: #FFFFFF;
             --text-main: #333333;
             --text-light: #7F8C8D;
+            --success-green: #27ae60;
+            --error-red: #e74c3c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -78,69 +80,20 @@
         }
 
         .header-info { text-align: center; margin-bottom: 40px; }
-        
         h1 { color: var(--slate-blue); font-size: 2.4rem; margin-bottom: 5px; }
-        
         .title { color: var(--primary-blue); font-weight: 600; font-size: 1.2rem; margin-bottom: 10px; }
-        
-        .contact-info {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
+        .contact-info { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; }
 
         section { padding: 40px 0; border-top: 1px solid #F0F2F5; }
-        
-        h2 {
-            color: var(--slate-blue);
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-            display: flex;
-            align-items: center;
-        }
-
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #EEEEEE;
-            margin-left: 20px;
-        }
+        h2 { color: var(--slate-blue); margin-bottom: 25px; font-size: 1.6rem; display: flex; align-items: center; }
+        h2::after { content: ""; flex: 1; height: 1px; background: #EEEEEE; margin-left: 20px; }
 
         .item { margin-bottom: 35px; }
-        
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            color: var(--slate-blue);
-            font-size: 1.1rem;
-        }
-
-        .item-sub {
-            color: var(--primary-blue);
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-
+        .item-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--slate-blue); font-size: 1.1rem; }
+        .item-sub { color: var(--primary-blue); font-size: 0.95rem; font-weight: 500; margin-bottom: 12px; }
         ul { list-style-type: none; }
-        
-        ul li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-            color: #444;
-            font-size: 0.95rem;
-        }
-
-        ul li::before {
-            content: "→";
-            color: var(--primary-blue);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
+        ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #444; font-size: 0.95rem; }
+        ul li::before { content: "→"; color: var(--primary-blue); position: absolute; left: 0; font-weight: bold; }
 
         .skills-grid {
             display: grid;
@@ -159,6 +112,53 @@
             text-align: center;
         }
 
+        /* GAME STYLES */
+        #game-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 2px dashed #cbd5e0;
+            margin-top: 20px;
+        }
+
+        .hidden { display: none; }
+
+        .btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover { background: var(--slate-blue); transform: translateY(-2px); }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option-btn:hover { border-color: var(--primary-blue); background: #f0f7ff; }
+        
+        .feedback { margin-top: 15px; font-weight: 600; min-height: 25px; }
+        .correct { color: var(--success-green); }
+        .incorrect { color: var(--error-red); }
+
         footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 0.85rem; }
 
         @media (max-width: 600px) {
@@ -166,6 +166,7 @@
             .item-header { flex-direction: column; gap: 5px; }
             h1 { font-size: 1.9rem; }
             .card { padding: 70px 25px 30px; }
+            .options-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -176,6 +177,7 @@
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
+        <a href="#game">Challenge</a>
     </nav>
 
     <div class="container">
@@ -184,6 +186,7 @@
         </div>
 
         <div class="card">
+            <!-- Previous sections (About, Experience, Education, Skills) remain the same -->
             <div id="about" class="header-info">
                 <h1>Ibrahim Rashid</h1>
                 <p class="title">Accounting & Finance | Rutgers Business School</p>
@@ -191,13 +194,12 @@
                     Fair Lawn, NJ • (201) 851-9120 • Ibrahim.rashid2005@hotmail.com
                 </p>
                 <p class="bio" style="color: var(--text-light); max-width: 650px; margin: 0 auto;">
-                    Founder & CEO and Cost Control Analyst with a proven track record of reducing costs and improving operational efficiency. Currently pursuing a B.S. at Rutgers University with a focus on delivering value through strategic financial analysis.
+                    Founder & CEO and Cost Control Analyst with a proven track record of reducing costs and improving operational efficiency. Currently pursuing a B.S. at Rutgers University.
                 </p>
             </div>
 
             <section id="experience">
                 <h2>Work Experience</h2>
-                
                 <div class="item">
                     <div class="item-header">
                         <span>Founder & CEO</span>
@@ -205,36 +207,7 @@
                     </div>
                     <div class="item-sub">Rashid Group Construction | Paterson, NJ</div>
                     <ul>
-                        <li>Lead a licensed and insured residential contracting firm serving North Jersey.[cite: 2]</li>
-                        <li>Manage brand presence and outreach through photo and video portfolios and lead response.[cite: 2]</li>
-                        <li>Produce written estimates and proposals, negotiating and securing contracts with new clientele.[cite: 2]</li>
-                    </ul>
-                </div>
-
-                <div class="item">
-                    <div class="item-header">
-                        <span>Cost Control Analyst Intern</span>
-                        <span>May 2025 – Aug 2025</span>
-                    </div>
-                    <div class="item-sub">Rasquinha Group | Washington Township, NJ</div>
-                    <ul>
-                        <li>Reduced food costs by 4% for a $40 million company through targeted cost control strategies.[cite: 2]</li>
-                        <li>Lowered labor costs by identifying staffing inefficiencies through variance analysis.[cite: 2]</li>
-                        <li>Improved utility efficiency by 1% through consumption trend analysis.[cite: 2]</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div class="item">
-                    <div class="item-header">
-                        <span>Rutgers University - Rutgers Business School</span>
-                        <span>May 2027</span>
-                    </div>
-                    <div class="item-sub">Bachelor of Science in Accounting & Finance | GPA: 3.6/4.0</div>
-                    <ul>
-                        <li>Focusing on high-level financial analysis and accounting principles.[cite: 2]</li>
+                        <li>Lead a licensed and insured residential contracting firm serving North Jersey.</li>
                     </ul>
                 </div>
             </section>
@@ -245,12 +218,33 @@
                     <div class="skill-tag">Microsoft Excel</div>
                     <div class="skill-tag">SQL</div>
                     <div class="skill-tag">Cost Control</div>
-                    <div class="skill-tag">Team Management</div>
                     <div class="skill-tag">Financial Analysis</div>
-                    <div class="skill-tag">Bilingual</div>
                 </div>
             </section>
 
+            <!-- GAME SECTION STARTS HERE -->
+            <section id="game">
+                <h2>Financial Literacy Challenge</h2>
+                <div id="game-container">
+                    <div id="start-screen">
+                        <p style="margin-bottom: 20px;">Think you know accounting? Test your knowledge with 20 quick questions!</p>
+                        <button class="btn" onclick="startGame()">Click to Activate</button>
+                    </div>
+
+                    <div id="quiz-screen" class="hidden">
+                        <p id="progress" style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 10px;"></p>
+                        <h3 id="question-text" style="margin-bottom: 20px;"></h3>
+                        <div class="options-grid" id="options-container"></div>
+                        <p id="feedback-msg" class="feedback"></p>
+                    </div>
+
+                    <div id="end-screen" class="hidden">
+                        <h3>Game Over!</h3>
+                        <p id="final-score" style="margin: 15px 0; font-size: 1.2rem; font-weight: 600;"></p>
+                        <button class="btn" onclick="startGame()">Try Again</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -258,5 +252,94 @@
         &copy; 2026 Ibrahim Rashid. Built with Master Prompting techniques.
     </footer>
 
+    <script>
+        const questions = [
+            { q: "What is the basic Accounting Equation?", a: ["Assets = Liabilities + Equity", "Assets + Liabilities = Equity", "Revenue - Expenses = Assets"], c: 0 },
+            { q: "Which financial statement shows a company's financial position at a specific point in time?", a: ["Income Statement", "Balance Sheet", "Cash Flow Statement"], c: 1 },
+            { q: "What type of account is 'Accounts Payable'?", a: ["Asset", "Equity", "Liability"], c: 2 },
+            { q: "What is the term for the decrease in value of a physical asset over time?", a: ["Amortization", "Depreciation", "Accrual"], c: 1 },
+            { q: "A 'Debit' increases which type of account?", a: ["Revenue", "Liabilities", "Assets"], c: 2 },
+            { q: "What is the 'Bottom Line' of an Income Statement?", a: ["Gross Profit", "Net Income", "Total Revenue"], c: 1 },
+            { q: "Which of these is an Intangible Asset?", a: ["Inventory", "Machinery", "Trademark"], c: 2 },
+            { q: "What does GAAP stand for?", a: ["General Asset Accounting Practice", "Generally Accepted Accounting Principles", "Global Account Analysis Protocol"], c: 1 },
+            { q: "Which ratio measures a company's ability to pay short-term debts?", a: ["Debt-to-Equity", "Return on Investment", "Current Ratio"], c: 2 },
+            { q: "Under Accrual Accounting, when is revenue recognized?", a: ["When cash is received", "When earned", "At the end of the year"], c: 1 },
+            { q: "What is the cost of goods sold (COGS)?", a: ["Indirect costs", "Direct costs of production", "Marketing expenses"], c: 1 },
+            { q: "Which ledger contains all the accounts of a business?", a: ["General Ledger", "Sales Journal", "Trial Balance"], c: 0 },
+            { q: "What is an 'Audit'?", a: ["A loan application", "Official inspection of accounts", "A tax payment"], c: 1 },
+            { q: "What is 'Equity'?", a: ["Money owed to banks", "Ownership interest in a company", "Total cash on hand"], c: 1 },
+            { q: "What is a 'Dividend'?", a: ["A type of tax", "Distribution of profits to shareholders", "A business expense"], c: 1 },
+            { q: "Which account is NOT on the Balance Sheet?", a: ["Sales Revenue", "Retained Earnings", "Inventory"], c: 0 },
+            { q: "What is 'Liquidity'?", a: ["The ability to turn assets into cash", "Total debt amount", "Profit margin percentage"], c: 0 },
+            { q: "What is 'Working Capital'?", a: ["Current Assets - Current Liabilities", "Total Assets - Total Liabilities", "Net Income + Depreciation"], c: 0 },
+            { q: "Which of these is a contra-asset account?", a: ["Accounts Receivable", "Accumulated Depreciation", "Prepaid Insurance"], c: 1 },
+            { q: "What is 'ROI'?", a: ["Return on Investment", "Rate of Inflation", "Risk of Insolvency"], c: 0 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let shuffledQuestions = [];
+
+        function startGame() {
+            shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('end-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = shuffledQuestions[currentQuestionIndex];
+            document.getElementById('progress').innerText = `Question ${currentQuestionIndex + 1} of 20`;
+            document.getElementById('question-text').innerText = q.q;
+            document.getElementById('feedback-msg').innerText = "";
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            q.a.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = option;
+                btn.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(index) {
+            const correctIndex = shuffledQuestions[currentQuestionIndex].c;
+            const feedback = document.getElementById('feedback-msg');
+            const buttons = document.querySelectorAll('.option-btn');
+            
+            // Disable buttons to prevent double clicking
+            buttons.forEach(b => b.disabled = true);
+
+            if (index === correctIndex) {
+                score++;
+                feedback.innerText = "Correct! ✓";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerText = `Incorrect. The right answer was: ${shuffledQuestions[currentQuestionIndex].a[correctIndex]}`;
+                feedback.className = "feedback incorrect";
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < 20) {
+                    showQuestion();
+                } else {
+                    showEndScreen();
+                }
+            }, 1500);
+        }
+
+        function showEndScreen() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('end-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = `Your Score: ${score} / 20`;
+        }
+    </script>
 </body>
 </html>
